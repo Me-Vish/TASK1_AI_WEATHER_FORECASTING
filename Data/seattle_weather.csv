@@ -1,0 +1,12 @@
+import pandas as pd
+
+def load_data(path):
+    try:
+        df = pd.read_csv(path)
+        if df.empty:
+            raise ValueError(f"The file {path} is empty.")
+        return df
+    except FileNotFoundError:
+        print(f"File {path} not found.")
+    except pd.errors.EmptyDataError:
+        print(f"The file {path} is empty or invalid.")
